@@ -7,49 +7,51 @@ html, body {
     font-family: 'Arial', sans-serif;
     background-color: #222;
     color: #fff;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    /* Prevent text selection and context menus that interfere with touch/mouse */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #game-container {
     position: relative;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #87CEEB, #A0DEEB); /* Sky Blue */
+    background: linear-gradient(to bottom, #87CEEB, #A0DEEB); /* Sky Blue background */
     overflow: hidden; /* Hide anything outside */
 }
 
 canvas {
     display: block;
-    cursor: none; /* Hide default cursor during gameplay */
+    cursor: none; /* Hide default cursor during gameplay to show custom blade */
     background-color: transparent; /* Canvas background controlled by game-container */
 }
 
+/* UI Panel Styling */
 .game-ui {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
     padding: 30px 40px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
-    backdrop-filter: blur(5px);
-    border: 2px solid #0ff;
-    z-index: 10;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6); /* Cyan glow effect */
+    backdrop-filter: blur(5px); /* Blurs content behind the UI */
+    border: 2px solid #0ff; /* Cyan border */
+    z-index: 10; /* Ensure UI is on top of canvas */
 }
 
 .game-ui.hidden {
-    display: none;
+    display: none; /* Hide UI elements when not active */
 }
 
 h1 {
-    color: #0ff;
+    color: #0ff; /* Cyan color */
     font-size: 3em;
     margin-bottom: 20px;
     text-shadow: 0 0 10px #0ff;
@@ -70,9 +72,10 @@ p {
 .high-score {
     font-size: 1.2em;
     margin-top: 15px;
-    color: #ffcc00;
+    color: #ffcc00; /* Gold color for high score */
 }
 
+/* Button Styling */
 .btn {
     display: block;
     width: 200px;
@@ -80,8 +83,8 @@ p {
     padding: 15px 25px;
     font-size: 1.3em;
     font-weight: bold;
-    color: #000;
-    background-color: #0ff;
+    color: #000; /* Black text */
+    background-color: #0ff; /* Cyan button background */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -109,14 +112,14 @@ p {
     top: 10px;
     left: 10px;
     right: 10px;
-    transform: none;
+    transform: none; /* Override default transform for positioning */
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(0, 255, 255, 0.3);
-    box-shadow: none;
+    box-shadow: none; /* Remove glow for HUD */
     border-radius: 10px;
     width: auto; /* Adjust width based on content */
-    z-index: 11; /* Above other UI */
+    z-index: 11; /* Above other UI to ensure visibility */
 }
 
 .hud-item {
@@ -125,12 +128,12 @@ p {
     color: #fff;
     margin: 0 10px;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: nowrap; /* Prevent wrapping for score/lives/combo */
 }
 
 #lives-display {
-    color: red;
-    font-size: 1.2em;
+    color: red; /* Red hearts for lives */
+    font-size: 1.2em; /* Slightly smaller hearts */
 }
 
 .hud-btn {
@@ -146,11 +149,11 @@ p {
     margin-top: 25px;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .game-ui {
         padding: 20px 25px;
-        width: 80%;
+        width: 80%; /* Make UI narrower on small screens */
     }
     h1 {
         font-size: 2.2em;
